@@ -1,0 +1,31 @@
+services:
+  - type: web
+    name: tekisho-backend-web
+    env: python
+    plan: free
+    instanceSize: standard
+    buildCommand: pip install -r backend/requirements.txt
+    # Start command runs your Flask server; Render provides $PORT
+    startCommand: >
+      bash -lc "python -u backend/server.py"
+    envVars:
+      - key: PYTHONUNBUFFERED
+        value: "1"
+    healthCheckPath: /health
+    rootDir: .
+    autoDeploy: true
+
+  - type: worker
+    name: tekisho-agent-worker
+    env: python
+    plan: free
+    instanceSize: standard
+    buildCommand: pip install -r backend/requirements.txt
+    # Start the livekit agent process (same as running locally)
+    startCommand: >
+      bash -lc "python -u backend/agent.py dev"
+    envVars:
+      - key: PYTHONUNBUFFERED
+        value: "1"
+    rootDir: .
+    autoDeploy: true
