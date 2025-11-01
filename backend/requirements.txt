@@ -12,4 +12,3 @@ livekit-plugins-silero
 openai
 pinecone
 supabase
-    
