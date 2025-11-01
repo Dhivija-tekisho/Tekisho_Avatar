@@ -1,0 +1,15 @@
+livekit-agents
+livekit-plugins-openai
+livekit-plugins-noise-cancellation
+requests
+python-dotenv
+livekit-agents[tavus]~=1.0
+tzdata
+flask[async]
+flask
+flask-cors
+livekit-plugins-silero
+openai
+pinecone
+supabase
+    
